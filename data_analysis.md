@@ -1,3 +1,8 @@
+# 0. Installing Conda and Setting up directories:
+```bash 
+mkdir data/raw_fastq software/ results/
+```
+
 # 1. Creating Conda Env and setting up:
 
 ```bash
@@ -24,12 +29,6 @@ conda install bioconda::snpeff -y
 conda create -n gemini_env python=3.8
 conda activate gemini_env
 conda install -c bioconda gemini
-```
-
-##   
-
-```bash
-mkdir data/raw_fastq software/ results/
 ```
 
 
