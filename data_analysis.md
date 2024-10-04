@@ -1,5 +1,6 @@
 # 1. Creating Conda Env and setting up:
 
+'''bash
     
     conda create -n wes -y
     conda activate wes
@@ -25,6 +26,7 @@
     conda install -c bioconda gemini
 
 ## 
+'''bash
     mkdir data/raw_fastq software/ results/
 
 ## 1.1 Obtaining raw reads:
