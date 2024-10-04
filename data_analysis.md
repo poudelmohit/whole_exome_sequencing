@@ -2,28 +2,28 @@
 
 ```bash
     
-    conda create -n wes -y
-    conda activate wes
+conda create -n wes -y
+conda activate wes
 
-    conda config --add channels defaults
-    conda config --add channels bioconda
-    conda config --add channels conda-forge
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
 
-    conda activate wes
+conda activate wes
 
-    conda install bioconda::fastqc -y
-    conda install bioconda::trimmomatic -y
-    conda install bioconda::bwa -y
-    conda install bioconda::samtools -y
-    conda install bioconda::bcftools -y
-    conda install bioconda::snpeff -y
+conda install bioconda::fastqc -y
+conda install bioconda::trimmomatic -y
+conda install bioconda::bwa -y
+conda install bioconda::samtools -y
+conda install bioconda::bcftools -y
+conda install bioconda::snpeff -y
 
-    # due to version conflict, I am creating new env for 
-    # GEMINI (tool required in Step 5: Annotation)
+# due to version conflict, I am creating new env for 
+# GEMINI (tool required in Step 5: Annotation)
 
-    conda create -n gemini_env python=3.8
-    conda activate gemini_env
-    conda install -c bioconda gemini
+conda create -n gemini_env python=3.8
+conda activate gemini_env
+conda install -c bioconda gemini
 
 ## 
 ```bash
