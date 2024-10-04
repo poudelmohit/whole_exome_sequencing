@@ -26,10 +26,12 @@ conda activate gemini_env
 conda install -c bioconda gemini
 ```
 
-## 
+##   
 
 ```bash
-    mkdir data/raw_fastq software/ results/
+mkdir data/raw_fastq software/ results/
+```
+
 
 ## 1.1 Obtaining raw reads:
 
@@ -46,19 +48,19 @@ wget https://zenodo.org/record/3243160/files/proband_R2.fq.gz
 
 # unzipping files:
 gunzip *.gz
+```
 
 ## 1.2 Downloading reference sequence:
 ```bash
 cd ..
 wget https://zenodo.org/record/3243160/files/hg19_chr8.fa.gz
 gunzip hg19_chr8.fa.gz
+```
 
 # 2. Quality Control:
 ```bash
-
 mkdir fastqc_results
 cd raw_fastq && ls
-
 fastqc *.fq
 
 # moving fastqc results to different directory:
@@ -66,21 +68,24 @@ fastqc *.fq
 mv *.html *.zip ../fastqc_results
 ls ../fastqc_results
 # Quality of the reads looks fine to me. Skipping trimming for now.
+```
 
 # 3. Mapping paired-end raw reads with reference fasta:
+
 ```bash
-
 mkdir ../mapped_files && cd $_
-
 mv ../hg19_chr8.fa ./
+```
 
 ## 3.1 Indexing the reference fasta file:
+
 ```bash
-bwa index hg19_chr8.fa 
+bwa index hg19_chr8.fa
+```
 
 ## 3.2 Mapping the paired-end reads (sam and bam):
-```bash
 
+```bash
     bwa mem hg19_chr8.fa ../raw_fastq/father_R?.fq > father.sam
     bwa mem hg19_chr8.fa ../raw_fastq/mother_R?.fq > mother.sam
     bwa mem hg19_chr8.fa ../raw_fastq/proband_R?.fq > proband.sam
@@ -99,10 +104,11 @@ bwa index hg19_chr8.fa
     
         samtools index ${base}.sorted.rmdup.bam
     done
+```
 
 # 4. Variant Calling:
-```bash
 
+```bash
     mkdir ../variant_calling
 
     bcftools mpileup -f hg19_chr8.fa father.sorted.rmdup.bam mother.sorted.rmdup.bam proband.sorted.rmdup.bam -Oz -o ../variant_calling/trio.pileup.vcf.gz
@@ -119,6 +125,7 @@ bwa index hg19_chr8.fa
     # fitering the raw VCF file:
 
     bcftools filter -i 'QUAL>30' -Oz -o trio.filtered.variants.vcf.gz trio.variants.vcf.gz
+```
 
 # 5. Annotation:
 
