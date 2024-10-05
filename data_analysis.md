@@ -63,14 +63,14 @@ gunzip hg19_chr8.fa.gz
 
 # 2. Quality Control:
 ```bash
-mkdir fastqc_results
-cd raw_fastq && ls
+mkdir results/fastqc_results
+cd data/raw_fastq && ls
 fastqc *.fq
 
 # moving fastqc results to different directory:
 
-mv *.html *.zip ../fastqc_results
-ls ../fastqc_results
+mv *.html *.zip ../../results/fastqc_results
+ls ../../results/fastqc_results
 # Quality of the reads looks fine to me. Skipping trimming for now.
 ```
 
