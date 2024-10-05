@@ -1,12 +1,19 @@
-# 0. Installing Conda and Setting up directories:
+# Setting up directories:
 ```bash 
-mkdir data/raw_fastq software/ results/
+mkdir -p data/raw_fastq software/ results/
 ```
-
+# Installing Conda:
+```bash
+cd software && wget https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-x86_64.sh
+chmod +x Anaconda3-*.sh
+bash Anaconda3-*.sh # Press Enter and 'Yes'
+# Please restart the terminal
+conda config --set auto_activate_base false
+```
 # 1. Creating Conda Env and setting up:
 
 ```bash
-    
+
 conda create -n wes -y
 conda activate wes
 
@@ -14,21 +21,19 @@ conda config --add channels defaults
 conda config --add channels bioconda
 conda config --add channels conda-forge
 
-conda activate wes
-
 conda install bioconda::fastqc -y
 conda install bioconda::trimmomatic -y
 conda install bioconda::bwa -y
 conda install bioconda::samtools -y
 conda install bioconda::bcftools -y
 conda install bioconda::snpeff -y
-
+conda deactivate
 # due to version conflict, I am creating new env for 
 # GEMINI (tool required in Step 5: Annotation)
 
-conda create -n gemini_env python=3.8
+conda create -n gemini_env python=3.8 -y
 conda activate gemini_env
-conda install -c bioconda gemini
+conda install -c bioconda gemini -y
 ```
 
 
