@@ -34,6 +34,7 @@ conda deactivate
 conda create -n gemini_env python=3.8 -y
 conda activate gemini_env
 conda install -c bioconda gemini -y
+conda deactivate
 ```
 
 
@@ -63,8 +64,8 @@ gunzip hg19_chr8.fa.gz
 
 # 2. Quality Control:
 ```bash
-mkdir results/fastqc_results
-cd data/raw_fastq && ls
+mkdir ../results/fastqc_results
+cd raw_fastq && ls
 fastqc *.fq
 
 # moving fastqc results to different directory:
@@ -84,6 +85,7 @@ mv ../hg19_chr8.fa ./
 ## 3.1 Indexing the reference fasta file:
 
 ```bash
+ls
 bwa index hg19_chr8.fa
 ```
 
@@ -113,11 +115,11 @@ bwa index hg19_chr8.fa
 # 4. Variant Calling:
 
 ```bash
-    mkdir ../variant_calling
+    mkdir ../variant_calling_files
 
-    bcftools mpileup -f hg19_chr8.fa father.sorted.rmdup.bam mother.sorted.rmdup.bam proband.sorted.rmdup.bam -Oz -o ../variant_calling/trio.pileup.vcf.gz
+    bcftools mpileup -f hg19_chr8.fa father.sorted.rmdup.bam mother.sorted.rmdup.bam proband.sorted.rmdup.bam -Oz -o ../variant_calling_files/trio.pileup.vcf.gz
 
-    cd ../variant_calling
+    cd ../variant_calling_files
     
     # calling variants:
     bcftools call -mv -Oz -o trio.variants.vcf.gz trio.pileup.vcf.gz
@@ -132,7 +134,14 @@ bwa index hg19_chr8.fa
 ```
 
 # 5. Annotation:
+```bash
+conda activate wes
 
+# downloading the snpeff database:
+snpEff download GRCh37.75
+
+snpEff -Xmx8G GRCh37.75 trio.filtered.variants.vcf.gz > annotated.vcf.gz
+ls -lh 
 
 
 
