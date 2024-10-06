@@ -1,0 +1,15 @@
+(gemini_env) mp067823@HV-I-HPC-P01-02:~/extra/whole_exome_sequencing/data/variant_calling_files$ gemini load --cores 4 -v reannotated.vcf.gz -t snpEff -p family.ped db.gemini
+/home/mp067823/anaconda3/envs/gemini_env/lib/python3.8/site-packages/ipyparallel/apps/ipcontrollerapp.py:3: UserWarning: ipyparallel.apps.ipcontrollerapp is deprecated in ipyparallel 7. Use ipyparallel.controller
+  warnings.warn(f"{__name__} is deprecated in ipyparallel 7. Use ipyparallel.controller")
+Traceback (most recent call last):
+  File "/home/mp067823/anaconda3/envs/gemini_env/bin/gemini", line 7, in <module>
+    gemini_main.main()
+  File "/home/mp067823/anaconda3/envs/gemini_env/lib/python3.8/site-packages/gemini/gemini_main.py", line 1249, in main
+    args.func(parser, args)
+  File "/home/mp067823/anaconda3/envs/gemini_env/lib/python3.8/site-packages/gemini/gemini_main.py", line 201, in load_fn
+    from gemini import gemini_load
+  File "/home/mp067823/anaconda3/envs/gemini_env/lib/python3.8/site-packages/gemini/gemini_load.py", line 11, in <module>
+    from cluster_helper.cluster import cluster_view
+  File "/home/mp067823/anaconda3/envs/gemini_env/lib/python3.8/site-packages/cluster_helper/cluster.py", line 443, in <module>
+    class BcbioSLURMEngineSetLauncher(SLURMLauncher, launcher.BatchClusterAppMixin):
+AttributeError: module 'ipyparallel.apps.launcher' has no attribute 'BatchClusterAppMixin'
