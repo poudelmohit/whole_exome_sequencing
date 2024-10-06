@@ -1,0 +1,3 @@
+father.sorted.rmdup.bam father
+mother.sorted.rmdup.bam mother
+proband.sorted.rmdup.bam proband
