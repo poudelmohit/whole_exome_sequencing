@@ -50,8 +50,10 @@ Due to storage limitations, not all files are provided here. The core analysis p
 
 ## Well, if you scrolled up to here !!
 ### I assume, you are excited about the results as well !!
-Please [click here](results/final_result.md) to go to the results page.
+**Please [click here](results/final_result.md) to go to the results page.**
+
 **OR**
+
 If you are excited **to see the result** of the analysis, please download [this file](results/variant_calling_files/snpEff_summary.html) and open in your favorite browser.
 
 ## Contact
